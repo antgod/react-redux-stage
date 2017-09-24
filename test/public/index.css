@@ -1,0 +1,115 @@
+body .ant-message {
+  top: 32px;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+  font-size: 0;
+}
+.clearfix {
+  *zoom: 1;
+}
+.display-flex {
+  *zoom: 1;
+  display: table-cell;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flex-wrap {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+body {
+  font-size: 12px;
+  height: auto;
+}
+.flex {
+  *zoom: 1;
+  display: table-cell;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.index {
+  background: #EBECED;
+  width: 1200px;
+}
+.index .item-inner {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 16px;
+}
+.index .item-gap-bottom {
+  margin-bottom: 8px;
+}
+.index .item-block {
+  background-color: #fff;
+}
+.index .item-block:last-child {
+  margin-bottom: 0;
+}
+.index .item-baseline {
+  background-color: #fff;
+  border-bottom: 1px solid #EEEFEF;
+}
+.index-cover-over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10001;
+}
+.index-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+.index-cover-mask {
+  background-color: #000;
+  opacity: 0.6;
+  height: 100%;
+}
+.index-cover-label {
+  color: #fff;
+  font-size: 48px !important;
+  position: absolute;
+  display: inline-block;
+}
+.index-cover-action {
+  position: absolute;
+}
+.index-cover-item {
+  position: absolute;
+}
+.index-row {
+  *zoom: 1;
+  display: table-cell;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 8px;
+}
+.index-left {
+  float: left;
+  width: 220px;
+  margin-right: 8px;
+  background-color: #fff;
+}
+.index-right {
+  float: left;
+  width: 970px;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJpbmRleC5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/
