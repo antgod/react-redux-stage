@@ -5,7 +5,6 @@ module.exports = schema =>
     prompt.start()
     prompt.get(schema, (error, result) => {
       if (error) {
-        /*eslint-disable*/
         console.log(error)
         rej(error)
       }

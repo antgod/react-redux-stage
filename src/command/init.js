@@ -1,56 +1,98 @@
 /* eslint-disable */
+const async = require('async')
+const path = require('path')
+const process = require('process')
 const prompt = require('../common/prompt')
 const cmd = require('../common/cmd')
 const { log, chalk } = require('../common/log')
-const { compose } = require('../common/util')
-const config = require('../../config/templates')
+const util = require('ant-util').default
 
-const customSchema = {
-  properties: {
-    git: {
-      description: 'git名称',
-      message: 'git名称不能为空',
-      required: true,
-    },
-    npm: {
-      description: 'npm名称',
-      message: 'npm名称不能为空',
-      required: true,
-    },
-  },
+const { inject, capitalize, exec, partialLeft } = util
+
+const COMFIRMED = {
+  YES: 'y',
+  NO: 'n',
 }
 
-const parseCommands = (url, branch, npm) =>
-  [{
-    cmd: `git clone ${url} ${npm}`,
-  }, {
-    cmd: `git checkout ${branch}`,
-  }, {
-    cmd: 'echo 项目初始化结束',
-  }]
-
-const valitInfo = (git, list) => {
-  if (config[git] === undefined) {
-    log(chalk.red(['项目不存在，请输入项目列表中的项目\n', list].join('')))
-    process.exit(0)
+/* 初始化模块模板 */
+const initialTemplate = async() => {
+  // 声明用户指令
+  const schema = {
+    properties: {
+      pathname: {
+        description: '请输入模块相对路径名',
+        message: '模块相对路径名不能为空',
+        required: true,
+      },
+    },
   }
-  return git
+
+  // 执行初始化命令
+  const exec = async({ src, target }) => {
+    const command = {
+      cmd: `cp -r ${src} ${target}`,
+    }
+    await cmd(command)
+    return '初始化成功'
+  }
+
+  // 执行用户命令
+  const { pathname } = await prompt(schema)
+
+  // 注射器
+  const injector = (pathname) => ({
+    src: path.resolve(__dirname, '..', 'demo'),
+    target: path.resolve(process.cwd(), pathname)
+  })
+
+  // 注入执行初始化命令参数
+  const result = await inject(await exec, injector)(pathname)
+
+  // 打印执行结果
+  log(chalk.green(result))
+
+  return {
+    pathname
+  }
 }
 
-const getInfo = git => config[git]
+/* 创建模块组件 */
+const createComponent = async({ pathname }) => {
+  // 声明用户指令
+  const input = {
+    properties: {
+      component: {
+        description: '请输入模块包含的组件，用逗号或空格分隔',
+      },
+    },
+  }
 
-const generatorProject = async function () {
-//  const { git, npm } = await prompt(customSchema)
-//  const list = await cmd({ cmd: 'any list' })
-//  const { git: url, branch } = compose(valitInfo, getInfo)(git, list)
-//
-//  const commands = parseCommands(url, branch, npm)
-//  // 这里不能使用forEach，每个forEach回调都是一个async函数，而每个async函数互不关联共同执行
-//  for (let i = 0; i < commands.length; i++) {
-//    log(chalk.green(await cmd(commands[i])))
-//  }
+  // 执行用户命令
+  const { component } = await prompt(input)
 
-  console.log('test')
+  const reg = /\s|,/
+  const components = component.split(reg).map(component => capitalize(component))
+
+  const confirm = {
+    properties: {
+      confirmed: {
+        description: `将要创建(${components.join(',')})组件，是否继续(y/n)？`,
+      },
+    },
+  }
+
+  // 执行用户命令
+  const { confirmed } = await prompt(confirm)
+
+  exec(confirmed !== COMFIRMED.YES, partialLeft(process.exit, 1))()
+
+
+  console.log('component', components, confirmed, pathname)
 }
 
-module.exports = generatorProject
+const generator = async() => {
+  const fns = [initialTemplate, createComponent]
+  async.compose(...fns.reverse())(null, (err, result) => console.log('result', err))
+}
+
+module.exports = generator

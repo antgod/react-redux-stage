@@ -1,0 +1,24 @@
+@import (reference) "../../common/common.less";
+
+@wrapper: ~"@{prefix}-panel";
+
+@left-width: 220px;
+@right-width: 980px;
+
+.@{wrapper} {
+  &-row {
+    .display-flex();
+    margin-bottom: @gap;
+  }
+
+  &-left {
+    float: left;
+    width: @left-width;
+    background-color: @block-color;
+  }
+
+  &-right {
+    float: left;
+    width: @right-width;
+  }
+}
