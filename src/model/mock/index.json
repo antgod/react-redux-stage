@@ -1,0 +1,13 @@
+{
+  "rpc": {
+    "a": {
+      "success": true
+    },
+    "b": {
+      "success": true
+    },
+    "c": {
+      "success": true
+    }
+  }
+}

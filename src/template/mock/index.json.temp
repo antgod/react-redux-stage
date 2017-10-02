@@ -1,0 +1,7 @@
+{
+  "rpc": {<% components.forEach((component, index) => { %>
+    "<%= component %>": {
+      "success": true
+    }<% if(index !== components.length - 1) { %>,<% } %><% }) %>
+  }
+}

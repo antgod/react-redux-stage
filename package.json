@@ -1,13 +1,13 @@
 {
-  "name": "any-cli",
+  "name": "ant-redux",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pub": "npm version patch && npm publish",
     "pre-commit": "eslint src",
-    "start": "webpack-dev-server --config ./test/webpack.config.js --progress --colors --content-base --port 8000",
-    "init": "node ./bin/app init"
+    "pub": "npm version patch && npm publish",
+    "init": "node ./bin/ant-redux init",
+    "add": "node ./bin/ant-redux add"
   },
   "author": "antgod",
   "devDependencies": {
@@ -71,13 +71,13 @@
     "redux": "^3.7.2"
   },
   "engines": {
-    "install-node": "8.0.0"
+    "install-node": "8.1.4"
   },
   "pre-commit": [
     "pre-commit"
   ],
   "bin": {
-    "app": "./bin/app"
+    "ant-redux": "./bin/ant-redux"
   },
   "license": "ISC"
 }
