@@ -20,12 +20,16 @@ $ant-redux add
 + 运行项目
 ```
 $cd xxx
+$npm i
 $npm start
 # 浏览器会自动打开页面
 ```
 
 + 编写项目
-直接编写xxx下composite下面组件与mock数据即可。相当简单
+  - 组件编写：组件位于composite文件夹下，结构清晰，注释完整，易于开发维护。
+  - mock数据：直接编写mock文件夹下index.js文件即可，编写完直接刷新页面生效。
+  - 事件编写：已封装promise与thunk中间件，事件触发器位于action文件夹下，事件句柄位于handle文件夹下，事件系统与redux一模一样。
+  - 如有改善与意见建议，或者有问题，欢迎联系作者@antgod，提交issue或者微信留言均可。
 
 #### 模式
 + 状态组件
