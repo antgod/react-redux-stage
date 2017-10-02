@@ -1,0 +1,24 @@
+<% const capitalize = str => str === undefined || str.length === 0 ? str : `${str[0].toUpperCase()}${str.slice(1)}` %>import React, { Component } from 'react'
+import Controller from './controller'
+// import Panel from '../component/panel'<% components.forEach((component) => { %>
+import <%= capitalize(component) %> from '../composite/<%= component %>'<% }) %>
+import Restore from './restore'
+import { PAGE_PREFIX } from '../common/constant'
+
+const restore = new Restore()
+
+@Controller
+class Layout extends Component {
+  componentDidMount() {
+    /* 这里做dom操作，比如浏览器滚动或不定位弹出层等react不易实现功能 */
+    restore.adjust()
+  }
+
+  render() {
+    return (<div className={PAGE_PREFIX}><% components.forEach((component) => { %>
+      <<%= capitalize(component) %> /><% }) %>
+    </div>)
+  }
+}
+
+export default Layout

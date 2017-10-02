@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 const init = require('../src/command/init')
 const program = require('commander')
-const { version } = require('../package')
-
 
 /*
  * 生成react-redux-template

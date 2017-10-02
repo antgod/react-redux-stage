@@ -1,0 +1,41 @@
+import './index.less'
+import util from 'ant-util'
+import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import action from '../../action'
+import { PAGE_PREFIX } from '../../common/constant'
+import Title from '../../component/title'
+import Super from '../common/super'
+
+// 工具包获取
+const { gets, get } = util.plugins.exist
+
+// 模块名定义区
+const module = '<%= moduleName %>'
+const prefix = `${PAGE_PREFIX}-${module}`
+
+/* 私有组件统一放在这里声明 */
+
+const <%= ModuleName %> = () => {
+  const { success, data } = gets(this.props)({
+    success: `${module}.success`,
+    data: `${module}.data`,
+  })
+  return success ? (<div className={prefix}>
+    <Title title="<%= moduleName %> title" />
+    <%= moduleName %> content
+  </div>) : null
+}
+
+function mapStateToProps(state) {
+  return {
+    <%= moduleName %>: get(state, 'rpc.<%= moduleName %>'),
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return { action: bindActionCreators(action, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(<%= ModuleName %>)

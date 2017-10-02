@@ -1,0 +1,64 @@
+import './index.less'
+import util from 'ant-util'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import action from '../../action'
+import { PAGE_PREFIX } from '../../common/constant'
+import Title from '../../component/title'
+import Super from '../common/super'
+
+// 工具包获取
+const { gets, get } = util.plugins.exist
+
+// 模块名定义区
+const module = '<%= moduleName %>'
+const prefix = `${PAGE_PREFIX}-${module}`
+
+/* 私有组件统一放在这里声明 */
+
+const <%= ModuleName %>Wrapper = (WrappedComponent) => {
+  class WrapperComponent extends Component {
+    /* 事件统一放在这里声明 */
+
+    render() {
+      const listeners = {}
+
+      // 这里传入了actions和form属性，form是antd的form，actions来自路由页面
+      return <WrappedComponent {...this.state} {...listeners} {...this.props} />
+    }
+  }
+  return WrapperComponent
+}
+
+@<%= ModuleName %>Wrapper
+class <%= ModuleName %> extends Super {
+  state = {}
+
+  renderSuccess = () => {
+    return (<div className={`${prefix} item-block`}>
+      <Title title="<%= moduleName %> title" />
+      <%= moduleName %> content
+    </div>)
+  }
+
+  render() {
+    const { success, data } = gets(this.props)({
+      success: `${module}.success`,
+      data: `${module}.data`,
+    })
+    return super.render({ success, data })
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    <%= moduleName %>: get(state, 'rpc.<%= moduleName %>'),
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return { action: bindActionCreators(action, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(<%= ModuleName %>)

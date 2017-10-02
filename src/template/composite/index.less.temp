@@ -1,0 +1,7 @@
+@import (reference) "../../index.less";
+
+@wrapper: ~"@{prefix}-<%= moduleName %>";
+
+.@{wrapper} {
+
+}
