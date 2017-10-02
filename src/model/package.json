@@ -1,5 +1,5 @@
 {
-  "name": "any-cli",
+  "name": "app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -24,7 +24,7 @@
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-remove-strict-mode": "0.0.2",
     "babel-plugin-transform-runtime": "^6.9.0",
-    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-runtime": "^6.11.6",
@@ -54,12 +54,11 @@
     "es6-shim": "^0.35.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-immutable-render-mixin": "^0.9.7",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2"
   },
   "engines": {
-    "install-node": "7.6.0"
+    "install-node": "8.1.4"
   },
   "pre-commit": [
     "pre-commit"

@@ -7,11 +7,16 @@ const { lowercase, readFile, writeFile, readdirSync } = require('./util')
 const { capitalize, map, exec } = util
 const event = new EventEmitter()
 
+const COMFIRMED = {
+  YES: 'y',
+  NO: 'n',
+}
+
 const analysisDependence = (isState, isHoc) => {
-  if (!isState) {
+  if (isState !== COMFIRMED.YES) {
     return 'index.stateless.js.temp'
   }
-  if (!isHoc) {
+  if (isHoc !== COMFIRMED.YES) {
     return 'index.nohoc.js.temp'
   }
   return 'index.js.temp'
