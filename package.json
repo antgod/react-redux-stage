@@ -1,6 +1,6 @@
 {
   "name": "ant-redux",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -71,7 +71,7 @@
     "redux": "^3.7.2"
   },
   "engines": {
-    "install-node": "8.1.4"
+    "install-node": "8.6.0"
   },
   "pre-commit": [
     "pre-commit"

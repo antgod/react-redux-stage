@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux'
 import action from '../../action'
 import { PAGE_PREFIX } from '../../common/constant'
 import Title from '../../component/title'
-import Super from '../common/super'
 
 // 工具包获取
 const { gets, get } = util.plugins.exist
@@ -17,12 +16,12 @@ const prefix = `${PAGE_PREFIX}-${module}`
 
 /* 私有组件统一放在这里声明 */
 
-const <%= ModuleName %> = () => {
-  const { success, data } = gets(this.props)({
+const <%= ModuleName %> = (props) => {
+  const { success, data } = gets(props)({
     success: `${module}.success`,
     data: `${module}.data`,
   })
-  return success ? (<div className={prefix}>
+  return success ? (<div className={`${prefix} item-block`}>
     <Title title="<%= moduleName %> title" />
     <%= moduleName %> content
   </div>) : null

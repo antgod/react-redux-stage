@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import action from '../../action'
 import { PAGE_PREFIX } from '../../common/constant'
 import Title from '../../component/title'
-import Super from '../common/super'
+import SuperComponent from '../common/supercomponent'
 
 // 工具包获取
 const { gets, get } = util.plugins.exist
@@ -32,7 +32,7 @@ const <%= ModuleName %>Wrapper = (WrappedComponent) => {
 }
 
 @<%= ModuleName %>Wrapper
-class <%= ModuleName %> extends Super {
+class <%= ModuleName %> extends SuperComponent {
   state = {}
 
   renderSuccess = () => {
