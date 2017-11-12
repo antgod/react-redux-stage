@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import Spm, { SPM_PAGE } from '../common/spm'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import util from 'ant-util'
+import action from '../action'
+
+const { identity } = util
 
 const Controller = (WrappedComponent) => {
-  return class extends Component {
+  class ControllerClass extends Component {
     componentDidMount() {
       this.configSpm()
     }
@@ -24,6 +30,12 @@ const Controller = (WrappedComponent) => {
       return <WrappedComponent {...this.state} {...listeners} {...this.props} />
     }
   }
+
+  function mapDispatchToProps(dispatch) {
+    return { action: bindActionCreators(action, dispatch) }
+  }
+
+  return connect(identity, mapDispatchToProps)(ControllerClass)
 }
 
 export default Controller

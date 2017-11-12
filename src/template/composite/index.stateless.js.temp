@@ -11,15 +11,15 @@ import Title from '../../component/title'
 const { gets, get } = util.plugins.exist
 
 // 模块名定义区
-const module = '<%= moduleName %>'
-const prefix = `${PAGE_PREFIX}-${module}`
+const componentName = '<%= moduleName %>'
+const prefix = `${PAGE_PREFIX}-${componentName}`
 
 /* 私有组件统一放在这里声明 */
 
 const <%= ModuleName %> = (props) => {
   const { success, data } = gets(props)({
-    success: `${module}.success`,
-    data: `${module}.data`,
+    success: `${componentName}.success`,
+    data: `${componentName}.data`,
   })
   return success ? (<div className={`${prefix} item-block`}>
     <Title title="<%= moduleName %> title" />

@@ -3,6 +3,7 @@ import util from 'ant-util'
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { immutableRenderDecorator } from 'react-immutable-render-mixin'
 import action from '../../action'
 import { PAGE_PREFIX } from '../../common/constant'
 import Title from '../../component/title'
@@ -12,11 +13,12 @@ import SuperComponent from '../common/supercomponent'
 const { gets, get } = util.plugins.exist
 
 // 模块名定义区
-const module = '<%= moduleName %>'
-const prefix = `${PAGE_PREFIX}-${module}`
+const componentName = '<%= moduleName %>'
+const prefix = `${PAGE_PREFIX}-${componentName}`
 
 /* 私有组件统一放在这里声明 */
 
+@immutableRenderDecorator
 class <%= ModuleName %> extends SuperComponent {
   state = {}
 
@@ -29,8 +31,8 @@ class <%= ModuleName %> extends SuperComponent {
 
   render() {
     const { success, data } = gets(this.props)({
-      success: `${module}.success`,
-      data: `${module}.data`,
+      success: `${componentName}.success`,
+      data: `${componentName}.data`,
     })
     return super.render({ success, data })
   }

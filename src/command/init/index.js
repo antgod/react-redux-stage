@@ -14,7 +14,8 @@ const initialTemplate = async() => {
     properties: {
       pathname: {
         description: '请输入模块相对路径名',
-        message: '模块相对路径名不能为空',
+        message: '模块相对路径名不能为空,且只能是数字、字母、下划线',
+        pattern: /^\w+$/,
         required: true,
       },
     },

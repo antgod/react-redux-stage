@@ -5,7 +5,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { connect, Provider } from 'react-redux'
-import { logger, promise, thunk } from './middleware'
+import promise from 'redux-promise'
+import { logger } from './middleware'
 import handles from './handle'
 import Layout from './page/layout'
 import { DATASOURCE } from './common/constant'
@@ -14,7 +15,7 @@ import mock from './mock'
 const { identity, mergeDefault } = util
 
 const App = connect(identity)(Layout)
-const storeCreator = compose(applyMiddleware(logger, promise, thunk))(createStore)
+const storeCreator = compose(applyMiddleware(logger, promise))(createStore)
 const store = storeCreator(handles, mergeDefault(window[DATASOURCE], mock))
 
 ReactDOM.render(

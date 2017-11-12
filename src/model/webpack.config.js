@@ -80,4 +80,12 @@ module.exports = {
     }),
     new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
   ],
+  devServer: {
+    stats: 'errors-only',
+    colors: true,
+    modules: false,
+    children: false,
+    chunks: false,
+    chunkModules: false,
+  },
 }

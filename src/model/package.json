@@ -52,13 +52,16 @@
     "ant-util": "^1.2.0",
     "es5-shim": "^4.5.9",
     "es6-shim": "^0.35.3",
+    "immutable": "^3.8.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-immutable-render-mixin": "^0.9.7",
     "react-redux": "^5.0.6",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-promise": "^0.5.3"
   },
   "engines": {
-    "install-node": "8.6.0"
+    "install-node": "8.9.0"
   },
   "pre-commit": [
     "pre-commit"

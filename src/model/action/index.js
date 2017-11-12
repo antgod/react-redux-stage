@@ -11,14 +11,6 @@ function handle(data) {
   return { type: MENU, data }
 }
 
-function handleAsync(text) {
-  return (dispatch) => {
-    setTimeout(() => {
-      dispatch(handle(text))
-    }, 1000)
-  }
-}
-
 function handlePromise(text) {
   return new Promise((res) => {
     setTimeout(() => {
@@ -31,5 +23,5 @@ function handlePromise(text) {
 }
 
 export default {
-  handle, handleAsync, handlePromise,
+  handle, handlePromise,
 }
